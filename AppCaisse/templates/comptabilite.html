@@ -1,0 +1,90 @@
+<!-- templates/comptabilite.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Vos balises meta et liens CSS ici -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="alert alert-success" style="text-align: center;">Comptabilité Generale et dynamique</h1>
+
+
+
+
+<div class="container-fluid text-center">
+    <div class="row">
+      <div class="col order-last">
+        <!-- Tableau pour le modèle MontantParDate -->
+        <h2 class="alert alert-warning">Depense Journalier</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for montantpardate_obj in montantpardate_data %}
+        <tr>
+            <td>{{ montantpardate_obj.date }}</td>
+            <td>{{ montantpardate_obj.montant }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+      </div>
+      <div class="col">
+        <!-- Tableau pour le modèle EntreeParDate -->
+        <h2 class="alert alert-info">Gain Journalier</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entreepardate_obj in entreepardate_data %}
+        <tr>
+            <td>{{ entreepardate_obj.date }}</td>
+            <td>{{ entreepardate_obj.montant_total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+      </div>
+      <div class="col order-first">
+        <!-- Tableau pour le modèle CashParJour -->
+        <h2 class="alert alert-success">Comptabilité Journalier</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cashparjour_obj in cashparjour_data %}
+        <tr>
+            <td>{{ cashparjour_obj.date }}</td>
+            <td>{{ cashparjour_obj.difference_cash }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+        
+        
+
